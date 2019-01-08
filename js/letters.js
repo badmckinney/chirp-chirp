@@ -19,15 +19,11 @@ function countLetters(counter, sample_text) {
   if (sample_text.length === 0) {
     return counter;
   }
-  let newText = sample_text.split('');
+  let newText = sample_text.toLowerCase().split('');
+  let lastLetter = newText.pop();
 
-  if (counter.hasOwnProperty(newText[newText.length - 1].toLowerCase())) {
-    let lastLetter = newText.pop();
-    lastLetter = lastLetter.toLowerCase();
+  if (counter.hasOwnProperty(lastLetter)) {
     counter[lastLetter]++;
-  } else {
-    newText.pop();
-
   }
 
   countLetters(counter, newText.join(''));
